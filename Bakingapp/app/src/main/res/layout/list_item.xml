@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+    <data>
+        <import type="java.lang.Integer"/>
+
+        <variable
+            name="recipe"
+            type="com.example.android.bakingapp.data.Recipe" />
+        <variable
+            name="clickRecipe"
+            type="com.example.android.bakingapp.ui.mainactivity.RecipeInterface"/>
+
+    </data>
+
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:onClick="@{() ->  clickRecipe.onClick(recipe)}"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity= "center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recipe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="cursive"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="Vanilla pie"
+                android:text="@{recipe.getName()}"/>
+
+            <TextView
+                android:id="@+id/recipe_servings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(recipe.getServings())}"
+                tools:text="@string/servings" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
