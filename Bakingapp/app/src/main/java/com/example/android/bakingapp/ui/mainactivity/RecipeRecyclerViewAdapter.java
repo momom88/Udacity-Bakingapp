@@ -1,16 +1,17 @@
 package com.example.android.bakingapp.ui.mainactivity;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.android.bakingapp.R;
-import com.example.android.bakingapp.databinding.ListItemBinding;
 import com.example.android.bakingapp.data.Recipe;
+import com.example.android.bakingapp.databinding.ListItemRecipeMainActivityBinding;
+
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,8 +36,8 @@ public class RecipeRecyclerViewAdapter extends RecyclerView.Adapter<RecipeRecycl
         if (mInflater == null) {
             mInflater = LayoutInflater.from(parent.getContext());
         }
-        ListItemBinding binding =
-                DataBindingUtil.inflate(mInflater, R.layout.list_item, parent, false);
+        ListItemRecipeMainActivityBinding binding =
+                DataBindingUtil.inflate(mInflater, R.layout.list_item_recipe_main_activity, parent, false);
         binding.setClickRecipe(mClickRecipeInterface);
         return new RecipeViewHolder(binding);
     }
@@ -53,9 +54,9 @@ public class RecipeRecyclerViewAdapter extends RecyclerView.Adapter<RecipeRecycl
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
 
-        private final ListItemBinding binding;
+        private final ListItemRecipeMainActivityBinding binding;
 
-        public RecipeViewHolder(final ListItemBinding binding) {
+        public RecipeViewHolder(final ListItemRecipeMainActivityBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

@@ -1,16 +1,19 @@
 package com.example.android.bakingapp.ui.mainactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.android.bakingapp.R;
 import com.example.android.bakingapp.data.Recipe;
+
 import com.example.android.bakingapp.databinding.ActivityMainBinding;
+import com.example.android.bakingapp.ui.detailactivity.IngredientsActivity;
 
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -43,10 +46,9 @@ public class MainActivity extends AppCompatActivity implements RecipeInterface {
 
     @Override
     public void onClick(Recipe recipe) {
-        Log.d(TAG, "On click" + recipe.getName());
-        Toast.makeText(this, "On click" + recipe.getName(),
-                Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent(this, IngredientsActivity.class);
+        intent.putExtra(getResources().getString(R.string.recipe_id),recipe.getId());
+        startActivity(intent);
     }
 }
 

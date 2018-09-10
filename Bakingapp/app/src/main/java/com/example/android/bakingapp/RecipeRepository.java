@@ -14,7 +14,6 @@ import androidx.lifecycle.LiveData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class RecipeRepository {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -31,6 +30,10 @@ public class RecipeRepository {
         refreshRecipe();
         return mRecipeDao.loadAllRecipe();
     }
+
+ //   public MutableLiveData<Recipe> getRecipeById(int id) {
+ //       return mRecipeDao.loadRecipeById(id);
+ //   }
 
     public void refreshRecipe() {
         Call<List<Recipe>> call = ApiCalls.getRecipeCall();
@@ -61,4 +64,6 @@ public class RecipeRepository {
             }
         });
     }
+
+
 }

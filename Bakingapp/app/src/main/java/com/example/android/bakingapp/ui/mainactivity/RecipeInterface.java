@@ -5,4 +5,3 @@ import com.example.android.bakingapp.data.Recipe;
 public interface RecipeInterface {
         void onClick(Recipe recipe);
     }
-

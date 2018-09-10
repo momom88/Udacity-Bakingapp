@@ -11,7 +11,7 @@ import androidx.room.TypeConverters;
 @Entity(tableName = "recipe")
 public class Recipe {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @Json(name = "id")
     private Integer id;
     @Json(name = "name")

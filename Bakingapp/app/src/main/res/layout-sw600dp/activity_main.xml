@@ -26,6 +26,6 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
-            tools:listitem="@layout/list_item"/>
+            tools:listitem="@layout/list_item_recipe_main_activity"/>
     </FrameLayout>
 </layout>
