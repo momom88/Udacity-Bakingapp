@@ -9,8 +9,9 @@ import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
-public class MainViewModel extends AndroidViewModel {
+public class MainViewModel extends ViewModel {
 
     // Constant for logging
     private static final String TAG = MainViewModel.class.getSimpleName();
@@ -18,9 +19,8 @@ public class MainViewModel extends AndroidViewModel {
     private LiveData<List<Recipe>> mRecipe;
     private RecipeRepository mRecipeRepository;
 
-    public MainViewModel(Application application) {
-        super(application);
-        mRecipeRepository = new RecipeRepository(application);
+    public MainViewModel(RecipeRepository repository) {
+        mRecipeRepository = repository;
         Log.d(TAG, "Actively retrieving the recipe from the DataBase");
         mRecipe = mRecipeRepository.getAppRecipe();
     }

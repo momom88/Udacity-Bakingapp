@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="clickStep"
-            type="com.example.android.bakingapp.ui.detailactivity.StepInterface">
-        </variable>
+            type="com.example.android.bakingapp.ui.ingredientsandstepsctivity.StepInterface"></variable>
 
         <variable
             name="step"
-            type="com.example.android.bakingapp.data.Step">
-        </variable>
+            type="com.example.android.bakingapp.data.Step"></variable>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,14 +24,15 @@
             android:id="@+id/step_order_text"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp16"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/text_large"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginBottom="@dimen/dp16"
+            android:textSize="32sp"
+            android:text=" - "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="01. " />
+            tools:text=" - " />
 
         <TextView
             android:id="@+id/step_name_text"
@@ -40,11 +40,22 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{step.getShortDescription}"
             android:textSize="@dimen/text_large"
             app:layout_constraintBottom_toBottomOf="@+id/step_order_text"
             app:layout_constraintStart_toEndOf="@+id/step_order_text"
             app:layout_constraintTop_toTopOf="@+id/step_order_text"
             tools:text="Recipe Intro" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/step_name_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

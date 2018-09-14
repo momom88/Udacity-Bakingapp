@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Baking app</string>
+    <string name="app_name">Baking</string>
     <string name="servings">Servings</string>
 
     <string name="recipe_empty_view">Empty list, check internet connection.</string>
@@ -7,7 +7,10 @@
     <string name="steps_list">Step list</string>
     <string name="ingredients">Ingredients</string>
     <string name="recipe_id">RECIPE_ID</string>
+    <string name="step_id">STEP_ID</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_name"> Steps </string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>

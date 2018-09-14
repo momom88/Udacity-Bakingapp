@@ -8,7 +8,8 @@ import com.example.android.bakingapp.R;
 import com.example.android.bakingapp.data.Recipe;
 
 import com.example.android.bakingapp.databinding.ActivityMainBinding;
-import com.example.android.bakingapp.ui.detailactivity.IngredientsActivity;
+import com.example.android.bakingapp.ui.ingredientsandstepsctivity.IngredientsActivity;
+import com.example.android.bakingapp.utilities.InjectorUtils;
 
 import java.util.List;
 
@@ -28,12 +29,14 @@ public class MainActivity extends AppCompatActivity implements RecipeInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding.setTitle(getResources().getString(R.string.app_name));
         mAdapter = new RecipeRecyclerViewAdapter(this);
         setupViewModel();
     }
 
     private void setupViewModel() {
-        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        MainViewModelFactory factory = InjectorUtils.provideMainActivityViewModelFactory(this.getApplicationContext());
+        MainViewModel viewModel = ViewModelProviders.of(this,factory).get(MainViewModel.class);
         viewModel.getRecipe().observe(this, new Observer<List<Recipe>>() {
             @Override
             public void onChanged(List<Recipe> recipes) {

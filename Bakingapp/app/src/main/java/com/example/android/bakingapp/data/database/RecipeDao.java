@@ -20,8 +20,8 @@ public interface RecipeDao {
     @Query("SELECT * FROM recipe")
     LiveData<List<Recipe>> loadAllRecipe();
 
- //   @Query("SELECT * FROM recipe WHERE id = :id")
-    //   MutableLiveData<Recipe> loadRecipeById(int id);
+   @Query("SELECT * FROM recipe WHERE id = :id")
+       LiveData<Recipe> loadRecipeById(int id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertRecipe(List<Recipe> recipes);
