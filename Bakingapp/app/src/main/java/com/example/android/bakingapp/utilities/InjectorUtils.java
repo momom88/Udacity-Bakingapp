@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.android.bakingapp.AppExecutors;
 import com.example.android.bakingapp.RecipeRepository;
 import com.example.android.bakingapp.data.database.AppDatabase;
+import com.example.android.bakingapp.ui.detailactivity.DetailViewModelFactory;
 import com.example.android.bakingapp.ui.ingredientsandstepsctivity.IngredientsViewModelFactory;
 import com.example.android.bakingapp.ui.mainactivity.MainViewModelFactory;
 
@@ -18,6 +19,11 @@ public class InjectorUtils {
     public static IngredientsViewModelFactory provideIngredientsViewModelFactory(Context context, int id) {
         RecipeRepository repository = provideRepository(context.getApplicationContext());
         return new IngredientsViewModelFactory(repository, id);
+    }
+
+    public static DetailViewModelFactory provideDetailViewModelFactory(Context context, int id){
+        RecipeRepository repository =provideRepository(context.getApplicationContext());
+        return new DetailViewModelFactory(repository, id);
     }
 
     public static MainViewModelFactory provideMainActivityViewModelFactory(Context context) {
