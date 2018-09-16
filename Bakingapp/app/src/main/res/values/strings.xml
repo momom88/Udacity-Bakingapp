@@ -8,9 +8,11 @@
     <string name="ingredients">Ingredients</string>
     <string name="recipe_id">RECIPE_ID</string>
     <string name="step_id">STEP_ID</string>
+    <string name="step">Step %d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_name"> Steps </string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="sample_not_found_error">Sample not found!</string>
 </resources>

@@ -31,13 +31,11 @@ import com.example.android.bakingapp.utilities.InjectorUtils;
  */
 public class IngredientsFragment extends Fragment implements StepInterface {
     private static final String TAG = MainActivity.class.getSimpleName();
-    public static final String RECIPE_ID = "repice_id";
     private FragmentIngredientsBinding mFragmentBinding;
     private IngredientsStepAdapter mAdapter;
     private IngredientsViewModel mViewModel;
     private Ingredient mIngredient;
     private Recipe mRecipe;
-
 
 
     public IngredientsFragment() {
@@ -59,10 +57,10 @@ public class IngredientsFragment extends Fragment implements StepInterface {
 
         int recipeId;
         if (savedInstanceState == null) {
-            recipeId = getArguments().getInt(RECIPE_ID, -1);
+            recipeId = getArguments().getInt(getResources().getString(R.string.recipe_id), -1);
             Log.d(TAG, "IngredientsFragment sevedinstance null: " + recipeId);
         } else {
-            recipeId = savedInstanceState.getInt(RECIPE_ID, -1);
+            recipeId = savedInstanceState.getInt(getResources().getString(R.string.recipe_id), -1);
             Log.d(TAG, "ingredientsFragment savedinstance: " + recipeId);
         }
 
@@ -94,10 +92,11 @@ public class IngredientsFragment extends Fragment implements StepInterface {
 
     @Override
     public void onStepClick(Step step) {
-        Log.d(TAG, "onStepClick :" + step.getId() + step.getDescription());
-        Toast.makeText(getContext(), "haha" , Toast.LENGTH_LONG).show();
-//        Intent intent = new Intent(getContext(), DetailActivity.class);
-//        intent.putExtra(getResources().getString(R.string.step_id),step.getId());
-//        startActivity(intent);
+        Log.d(TAG, "onStepClick: " + step.getId() + "  recipe id :  " + mRecipe.getId());
+        Toast.makeText(getContext(), step.getId().toString(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getContext(), DetailActivity.class);
+        intent.putExtra(getResources().getString(R.string.step_id), step.getId());
+        intent.putExtra(getResources().getString(R.string.recipe_id),mRecipe.getId());
+        startActivity(intent);
     }
 }

@@ -3,6 +3,7 @@ package com.example.android.bakingapp;
 import android.app.Application;
 import android.util.Log;
 
+import com.example.android.bakingapp.data.Step;
 import com.example.android.bakingapp.data.database.AppDatabase;
 import com.example.android.bakingapp.data.network.ApiCalls;
 import com.example.android.bakingapp.data.Recipe;
@@ -20,7 +21,6 @@ import retrofit2.Response;
 public class RecipeRepository {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
     // For Singleton instantiation
     private static final Object LOCK = new Object();
     private final RecipeDao mRecipeDao;
@@ -85,7 +85,6 @@ public class RecipeRepository {
     public LiveData<Recipe> loadRecipeById(int id) {
         return mRecipeDao.loadRecipeById(id);
     }
-
 
     public void saveToDatabase(final List<Recipe> recipes) {
         Log.d(TAG, "Save to database save to database save to database");
