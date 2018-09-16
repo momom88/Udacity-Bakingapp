@@ -1,23 +1,22 @@
-package com.example.android.bakingapp.ui.ingredientsandstepsctivity;
+package com.example.android.bakingapp.ui.detailactivity;
 
 import com.example.android.bakingapp.RecipeRepository;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-public class IngredientsViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
+public class DetailViewModelFactory extends ViewModelProvider.NewInstanceFactory{
     private final RecipeRepository mRepository;
     private final int mId;
 
-    public IngredientsViewModelFactory(RecipeRepository repository, int id) {
+    public DetailViewModelFactory(RecipeRepository recipeRepository, int id){
+        this.mRepository = recipeRepository;
         this.mId = id;
-        this.mRepository = repository;
     }
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
         //  noinspection unchecked
-        return (T) new IngredientsViewModel(mRepository, mId);
+        return (T) new DetailViewModel(mRepository, mId);
     }
 }
-

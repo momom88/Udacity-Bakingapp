@@ -1,5 +1,8 @@
 package com.example.android.bakingapp.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 import com.squareup.moshi.Json;
@@ -9,7 +12,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 @Entity(tableName = "recipe")
-public class Recipe {
+public class Recipe implements Parcelable {
 
     @PrimaryKey
     @Json(name = "id")
@@ -26,6 +29,33 @@ public class Recipe {
     private Integer servings;
     @Json(name = "image")
     private String image;
+
+    public final static Parcelable.Creator<Recipe> CREATOR = new Creator<Recipe>() {
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        public Recipe[] newArray(int size) {
+            return (new Recipe[size]);
+        }
+
+    };
+
+    protected Recipe(Parcel in) {
+        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.name = ((String) in.readValue((String.class.getClassLoader())));
+        in.readList(this.ingredients, (com.example.android.bakingapp.data.Ingredient.class.getClassLoader()));
+        in.readList(this.steps, (com.example.android.bakingapp.data.Step.class.getClassLoader()));
+        this.servings = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.image = ((String) in.readValue((String.class.getClassLoader())));
+    }
+
+    public Recipe() {
+    }
 
     public Integer getId() {
         return id;
@@ -73,6 +103,19 @@ public class Recipe {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(id);
+        dest.writeValue(name);
+        dest.writeList(ingredients);
+        dest.writeList(steps);
+        dest.writeValue(servings);
+        dest.writeValue(image);
+    }
+
+    public int describeContents() {
+        return 0;
     }
 
 }

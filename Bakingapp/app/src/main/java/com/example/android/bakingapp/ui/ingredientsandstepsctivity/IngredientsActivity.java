@@ -30,7 +30,7 @@ public class IngredientsActivity extends AppCompatActivity {
             int id = getIntent().getIntExtra(getResources().getString(R.string.recipe_id), -1);
             Log.d(TAG, "IngredientsActivity send: " + id);
             Bundle bundle = new Bundle();
-            bundle.putInt(IngredientsFragment.RECIPE_ID, id);
+            bundle.putInt(getResources().getString(R.string.recipe_id), id);
             ingredientsFragment.setArguments(bundle);
             mFragmentManager.beginTransaction()
                     .add(R.id.container ,ingredientsFragment)
