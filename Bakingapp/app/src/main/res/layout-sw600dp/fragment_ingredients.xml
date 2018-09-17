@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="title"
-            type="String" />
-    </data>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,19 +16,11 @@
             android:layout_weight="1"
             android:background="@android:color/white">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@color/colorPrimaryDark"
-                    android:fontFamily="cursive"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"
-                    android:title="@{title}" />
 
                 <include
                     android:id="@+id/ingredients_layout"
@@ -73,6 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            tools:ignore="InconsistentLayout" />
+            tools:listitem="@layout/fragment_detail"/>
     </LinearLayout>
+
 </layout>

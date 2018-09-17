@@ -3,6 +3,7 @@ package com.example.android.bakingapp.ui.mainactivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.android.bakingapp.R;
 import com.example.android.bakingapp.data.Recipe;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements RecipeInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mBinding.setTitle(getResources().getString(R.string.app_name));
+        loading();
         mAdapter = new RecipeRecyclerViewAdapter(this);
         setupViewModel();
     }
@@ -41,10 +42,21 @@ public class MainActivity extends AppCompatActivity implements RecipeInterface {
             @Override
             public void onChanged(List<Recipe> recipes) {
                 Log.d(TAG, "Updating list of tasks from LiveData in ViewModel");
+                loadData();
                 mAdapter.setTasks(recipes);
                 mBinding.recyclerView.setAdapter(mAdapter);
             }
         });
+    }
+
+    private void loading(){
+        mBinding.loadingIndicator.setVisibility(View.VISIBLE);
+        mBinding.recyclerView.setVisibility(View.GONE);
+    }
+
+    private void loadData(){
+        mBinding.loadingIndicator.setVisibility(View.GONE);
+        mBinding.recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -16,24 +16,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="title"
-            type="String"/>
-    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:fontFamily="cursive"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryDark"
-            android:title="@{title}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -42,5 +28,13 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             tools:listitem="@layout/list_item_recipe_main_activity"/>
+
+        <ProgressBar
+            android:id="@+id/loading_indicator"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:progressTint="@color/colorAccent"
+            android:visibility="invisible" />
     </FrameLayout>
 </layout>

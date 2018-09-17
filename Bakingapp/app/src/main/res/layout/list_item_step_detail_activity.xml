@@ -7,11 +7,11 @@
 
         <variable
             name="clickStep"
-            type="com.example.android.bakingapp.ui.ingredientsandstepsctivity.StepInterface"></variable>
+            type="com.example.android.bakingapp.ui.ingredientsandstepsctivity.StepInterface"/>
 
         <variable
             name="step"
-            type="com.example.android.bakingapp.data.Step"></variable>
+            type="com.example.android.bakingapp.data.Step"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,11 +24,11 @@
             android:id="@+id/step_order_text"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginStart="@dimen/dp8"
             android:layout_marginBottom="@dimen/dp16"
-            android:textSize="32sp"
+            android:layout_marginStart="@dimen/dp8"
             android:text=" - "
+            android:textColor="@color/colorPrimary"
+            android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,8 +38,8 @@
             android:id="@+id/step_name_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:text="@{step.getShortDescription}"
             android:textSize="@dimen/text_large"
             app:layout_constraintBottom_toBottomOf="@+id/step_order_text"

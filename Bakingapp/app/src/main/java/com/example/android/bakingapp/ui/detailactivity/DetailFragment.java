@@ -4,6 +4,7 @@ package com.example.android.bakingapp.ui.detailactivity;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -67,12 +68,10 @@ public class DetailFragment extends Fragment {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail,
                 container, false);
-
         if (savedInstanceState != null && savedInstanceState.containsKey(PLAYER_POSITION_STATE)) {
             mPlayerPosition = savedInstanceState.getLong(PLAYER_POSITION_STATE);
             mPlayWhenReady = savedInstanceState.getBoolean(PLAYER_PLAY_PAUSE_STATE);
         }
-
         return mBinding.getRoot();
     }
 
@@ -154,10 +153,10 @@ public class DetailFragment extends Fragment {
         if (mExoPlayer == null) {
             if (mExoPlayer == null) {
                 BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-                TrackSelection.Factory videoTrackSelectionFactory =
+                TrackSelection.Factory selectionFactory =
                         new AdaptiveTrackSelection.Factory(bandwidthMeter);
                 TrackSelector trackSelector =
-                        new DefaultTrackSelector(videoTrackSelectionFactory);
+                        new DefaultTrackSelector(selectionFactory);
                 mExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity(), trackSelector);
                 mBinding.playerView.setPlayer(mExoPlayer);
                 DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getActivity(),
