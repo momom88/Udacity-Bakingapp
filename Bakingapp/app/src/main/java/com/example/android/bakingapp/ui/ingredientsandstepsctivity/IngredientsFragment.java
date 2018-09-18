@@ -15,6 +15,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -26,19 +29,22 @@ import com.example.android.bakingapp.data.IngredientListToStringText;
 import com.example.android.bakingapp.data.Recipe;
 import com.example.android.bakingapp.data.Step;
 import com.example.android.bakingapp.databinding.FragmentIngredientsBinding;
+import com.example.android.bakingapp.databinding.ListItemIngredientDetailActivityBinding;
 import com.example.android.bakingapp.ui.detailactivity.DetailActivity;
 import com.example.android.bakingapp.ui.detailactivity.DetailFragment;
 import com.example.android.bakingapp.ui.mainactivity.MainActivity;
 import com.example.android.bakingapp.utilities.InjectorUtils;
+import com.example.android.bakingapp.widget.IngredientWidgetService;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IngredientsFragment extends Fragment implements StepInterface {
+public class IngredientsFragment extends Fragment implements StepInterface{
     private static final String TAG = MainActivity.class.getSimpleName();
     private FragmentIngredientsBinding mFragmentBinding;
     private IngredientsStepAdapter mAdapter;
     private IngredientsViewModel mViewModel;
+    private ListItemIngredientDetailActivityBinding mListItemIngredientDetailActivityBinding;
     private Ingredient mIngredient;
     private boolean mTwoPanel;
     private Recipe mRecipe;
@@ -53,6 +59,7 @@ public class IngredientsFragment extends Fragment implements StepInterface {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_ingredients, container, false);
+        setHasOptionsMenu(true);
         return mFragmentBinding.getRoot();
     }
 
@@ -60,6 +67,7 @@ public class IngredientsFragment extends Fragment implements StepInterface {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mAdapter = new IngredientsStepAdapter(this);
+
 
         int recipeId;
         if (savedInstanceState == null) {
@@ -77,6 +85,21 @@ public class IngredientsFragment extends Fragment implements StepInterface {
         mTwoPanel = getResources().getBoolean(R.bool.tablet);
         loadViewModel(recipeId);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.fragment_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_widget) {
+            IngredientWidgetService.updateWidget(getContext(), mRecipe);
+            Toast.makeText(getContext(),R.string.widget_add_to_pref,Toast.LENGTH_LONG).show();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 
     private void loadViewModel(int recipe) {

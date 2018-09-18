@@ -4,5 +4,4 @@ import com.example.android.bakingapp.data.Step;
 
 public interface StepInterface {
     void onStepClick(Step step);
-
 }

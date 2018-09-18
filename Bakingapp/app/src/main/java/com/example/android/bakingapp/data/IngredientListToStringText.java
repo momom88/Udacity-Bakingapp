@@ -1,5 +1,6 @@
 package com.example.android.bakingapp.data;
 
+import com.example.android.bakingapp.R;
 import com.example.android.bakingapp.data.Ingredient;
 
 import java.util.List;

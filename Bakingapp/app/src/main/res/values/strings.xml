@@ -10,9 +10,17 @@
     <string name="step_id">STEP_ID</string>
     <string name="step">Step %d</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    //widget
+    <string name="widget_recipe_name">RECIPE_NAME</string>
+    <string name="widget_ingredients_list">INGREDIENTS_LIST</string>
+    <string name="widget_no_recipe">Add recipe plz</string>
+    <string name="widget_add_to_pref">Add to widget</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_name"> Steps </string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="sample_not_found_error">Sample not found!</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="not_data">Not Recipe</string>
+    <string name="add_to_widget">Add Widget</string>
 </resources>
