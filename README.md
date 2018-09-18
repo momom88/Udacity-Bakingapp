@@ -13,8 +13,6 @@ Use Fragments to create a responsive design that works on phones and tablets.
 # Libraries
 * Retrofit 2 with Moshi converter
 * OkHttp
-* Retrolambda
-* ButterKnife
 * Gson
 * Picasso
 * ExoPlayer
